@@ -5,6 +5,7 @@
 using namespace std;
 
 Player::Player(Map *m, int startX, int startY){
+    amoCount = 0;
     map = m;
     xLocation = startX;
     yLocation = startY;
