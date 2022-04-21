@@ -4,14 +4,16 @@
  */
 #ifndef PLAYER_H_
 #define PLAYER_H_
+#include "map.h"
 #include <string>
 class Player{
     public:
+    Map *map;
     int xLocation;
     int yLocation;
-    Player(int startX, int startY);
+    Player(Map *m, int startX, int startY);
 
-    void move(char direction);
+    bool move(char direction);
 };
 
 #endif /*PLAYER_H_*/

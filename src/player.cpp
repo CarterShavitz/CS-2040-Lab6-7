@@ -4,11 +4,12 @@
 
 using namespace std;
 
-Player::Player(int startX, int startY){
+Player::Player(Map *m, int startX, int startY){
+    map = m;
     xLocation = startX;
     yLocation = startY;
 }
-void Player::move(char direction){
+bool Player::move(char direction){
     if(direction == 'e'){
         xLocation += 1;
     }
@@ -22,5 +23,7 @@ void Player::move(char direction){
         yLocation += 1;
     } else{
         cout << "enter a valid direction (e/n/w/s)" << endl;
+        return false;
     }
+    return true;
 }
