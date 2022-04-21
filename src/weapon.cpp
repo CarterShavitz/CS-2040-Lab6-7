@@ -24,8 +24,9 @@ bool Weapon::hasArrow() {
 }
 
 void Weapon::shootArrow()
-{
-    if(/*player shoots/clicks right or left or down or up on the arrow*/) {
+{ 
+    /*player shoots/clicks right or left or down or up on the arrow*/
+    if() {
         /*if checking if there a wumpus there*/
         /*if there a wumpus there, and the arrow is shot the "right" direction, 
         print out the statment the wumpus has been killed*/
@@ -35,7 +36,8 @@ void Weapon::shootArrow()
     }
 }
 
-bool Weaoon::killedWumpus()
+bool Weapon::killedWumpus()
 {
+    return false;
      /*return true if the wumpus has been killed or false if the wumpus has not been killed.*/
 }
