@@ -22,7 +22,9 @@ Wumpus::Wumpus(int x, int y, char type)
 void Wumpus::killPlayer() {
 
 }
+
 bool Wumpus::isDead() {
-    return token == '.';
-    /*print out you win line or 
+    return false;
+    //return token == '.';
+    /*print out you win line or this can be done in main*/
 }
