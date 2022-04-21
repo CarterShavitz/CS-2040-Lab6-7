@@ -16,7 +16,7 @@ class MapCell;
 // Add other methods and data as needed.
 class Map {
 public:
-  MapCell *cells[20][10];
+  MapCell *cells[6][6];
   // initialize empty map
   Map();
   // read the map from cin

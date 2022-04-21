@@ -27,7 +27,7 @@ bool MapCell::hasBat()
 {
     return token == 'B';
 }
-  // true if bat at this location
+  // true if hazard at this location
 bool MapCell::hasHazard()
 {
     return token == '@';
@@ -36,6 +36,11 @@ bool MapCell::hasHazard()
 bool MapCell::hasTreasure()
 {
     return token == '?';
+}
+  // true if hazard at this location
+bool MapCell::hasAmmo()
+{
+    return token == '-';
 }
   // remove the ammo at this location
 void MapCell::removeAmmo()

@@ -27,6 +27,8 @@ public:
   bool hasHazard();
   // true if treasure at this location
   bool hasTreasure();
+  // true if ammo at this location
+  bool hasAmmo();  
   // remove the ammo at this location
   void removeAmmo();
   // is this location occupied by the wumpus
