@@ -8,7 +8,9 @@ using namespace std;
 int main(){
     Map *map = new Map();
     map->load();
-    Player *player = new Player(map, 0,0);
+    int playerX = rand () % 6;
+    int playerY = rand () % 6;
+    Player *player = new Player(map, playerX,playerY);
     map->write();
     bool moved = false;
     while(!moved){
