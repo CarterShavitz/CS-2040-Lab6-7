@@ -47,6 +47,10 @@ void Map::load()
         {
             index = rand() % size;
             c = symbols[index];
+            if (c == 'P') {
+                playerx = i;
+                playery = j;
+            }
             Map::cells[i][j] = new MapCell(i, j, c);
             for (auto k = index; k < size; k++)
             {
