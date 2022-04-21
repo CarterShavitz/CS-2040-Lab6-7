@@ -1,5 +1,4 @@
 /*
- * cell.h
  *
  *      Author: Carter
  */
