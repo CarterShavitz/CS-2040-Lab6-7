@@ -17,5 +17,6 @@ int main(){
     cin >> direction;
     moved = player->move(direction);
     }
+    map->write();
 
 }
