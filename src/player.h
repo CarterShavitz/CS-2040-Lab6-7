@@ -8,6 +8,7 @@
 #include <string>
 class Player{
     public:
+    int amoCount;
     Map *map;
     int xLocation;
     int yLocation;
