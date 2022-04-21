@@ -8,11 +8,9 @@
 #define WUMPUS_H_
 
 class Wumpus {
-  int xLocation, yLocation;
-  char token;
-
 public:
-
+ int xLocation, yLocation;
+  char token;
   Wumpus(int x, int y, char type);
 
   void killPlayer();

@@ -1,5 +1,7 @@
 #include "player.h"
 #include "map.h"
+#include "wumpus.h"
+#include "cell.h"
 #include <iostream>
 #include <cstdio>
 
@@ -12,6 +14,7 @@ int main(){
     int playerY = rand () % 6;
     Player *player = new Player(map, playerX,playerY);
     map->write();
+    
     bool moved = false;
     while(!moved){
     cout << "Make your move (e/n/w/s): ";
