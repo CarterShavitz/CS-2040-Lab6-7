@@ -89,6 +89,23 @@ void Player::checkNeighbors()
         neighbors[size] = map->cells[xLocation][yLocation + 1]->display();
         size++;
     }
-    
-    cout << neighbors << endl;
+
+    bool bats = false, wumpus = false, pit = false;
+    for (int i = 0; i < size; i++)
+    {
+        if (neighbors[i] == 'B' && bats == false)
+        {
+            cout << "You hear flapping. ";
+            bats = true;
+        } else if (neighbors[i] == '!' && wumpus == false)
+        {
+            cout << "You smell something bad. ";
+            wumpus = true;
+        } else if (neighbors[i] == '@' && pit == false)
+        {
+            cout << "You feel a breeze. ";
+            pit = true;
+        }
+    }
+    cout << endl;    
 }
