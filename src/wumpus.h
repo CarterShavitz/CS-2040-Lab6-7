@@ -9,9 +9,10 @@
 
 class Wumpus {
 public:
+  Map *map;
  int xLocation, yLocation;
   char token;
-  Wumpus(int x, int y, char type);
+  Wumpus(Map *m, int x, int y, char type);
 
   void killPlayer();
   

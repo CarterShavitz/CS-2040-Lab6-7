@@ -8,15 +8,14 @@
 #define WEAPON_H_
 
 class Weapon {
-  int xLocation, yLocation;
-  char token;
  
 public:
 
-  Weapon(int x, int y, char type);
-
-  void shootArrow();
+  int xLocation, yLocation;
+  char token;
+  Map *map;
   
+  Weapon(Map *m, int x, int y, char type);
   bool hasArrow();
   bool killedWumpus();
 

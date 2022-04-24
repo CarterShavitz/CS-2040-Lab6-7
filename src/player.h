@@ -15,6 +15,7 @@ class Player{
     Player(Map *m, int startX, int startY);
 
     bool move(char direction);
+    void shootArrow();
 };
 
 #endif /*PLAYER_H_*/

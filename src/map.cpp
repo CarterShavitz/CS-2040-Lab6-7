@@ -51,6 +51,10 @@ void Map::load()
                 playerx = i;
                 playery = j;
             }
+            if (c == '!') {
+                wumpusx = i;
+                wumpusy = j;
+            }
             Map::cells[i][j] = new MapCell(i, j, c);
             for (auto k = index; k < size; k++)
             {
