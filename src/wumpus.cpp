@@ -27,7 +27,10 @@ void Wumpus::killPlayer() {
 }
 
 bool Wumpus::isDead() {
+<<<<<<< HEAD
+=======
     //return token == '.';
+>>>>>>> a26518af45014d4d9935021d56fab5055d06dd4f
     /*print out you win line or */
     return false;
     //return token == '.';
