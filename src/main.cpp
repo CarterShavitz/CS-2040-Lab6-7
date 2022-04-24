@@ -11,8 +11,9 @@ int main(){
     Map *map = new Map();
     map->load();
     Player *player = new Player(map, map->playerx,map->playery);
-    map->write();
-    // while(player->xLocation != )
+    // Wumpus *wumpus = new Wumpus()
+    // map->write();
+    // while(map.)
     bool moved = false;
     while(!moved){
     cout << "Make your move (e/n/w/s): ";
