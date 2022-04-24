@@ -13,9 +13,9 @@ public:
 
   int xLocation, yLocation;
   char token;
-  Map *map;
-  
-  Weapon(Map *m, int x, int y, char type);
+  MapCell *cell;
+
+  Weapon(MapCell* m, int x, int y, char type);
   bool hasArrow();
   bool killedWumpus();
 

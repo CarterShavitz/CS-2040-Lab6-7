@@ -11,14 +11,12 @@
 
 using namespace std;
 
-char previous = '.';
-
-Wumpus::Wumpus(Map *m, int x, int y, char type)
+Wumpus::Wumpus(MapCell *m, int x, int y, char type)
 {
+    cell = m; 
     xLocation = x;
     yLocation = y;
-    type == '!';
-    token = type;
+    type = token;
 }
 
 void Wumpus::killPlayer() {
