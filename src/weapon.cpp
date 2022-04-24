@@ -25,7 +25,8 @@ bool Weapon::hasArrow() {
 
 bool Weapon::killedWumpus()
 {
-    if(cell->hasWumpus() == '.') {
+    token == '.';
+    if(cell->hasWumpus() == token) {
         return true;
     }
     return false;

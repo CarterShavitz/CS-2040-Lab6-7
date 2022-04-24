@@ -20,10 +20,11 @@ Wumpus::Wumpus(MapCell *m, int x, int y, char type)
 }
 
 void Wumpus::killPlayer() {
-    /*if(cell->enter())) {
+    char player = 'p';
+    player = cell->display();
+    if(player == cell->occupied()) {
         cout << "Oh no, the wumpus killed you!";
-        token = '.';
-    }*/
+    }
 }
 
 bool Wumpus::isDead() {
