@@ -21,6 +21,7 @@ public:
     bool move(char direction);
     void shootArrow();
     void checkNeighbors();
+    bool determineMove(int x, int y);
 };
 
 #endif /*PLAYER_H_*/

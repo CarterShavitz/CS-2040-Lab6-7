@@ -13,6 +13,93 @@ Player::Player(Map *m, int startX, int startY){
     yLocation = startY;
 }
 
+
+bool Player::determineMove(int x, int y)
+{
+  if (map->cells[x][y]->hasWumpus())
+  {
+    return false;
+  }
+  if (map->cells[x][y]->hasAmmo())
+  {
+    amoCount++;
+    map->cells[x][y]->removeAmmo();
+  }
+  map->cells[x][y]->enter();
+  return true;
+} 
+ 
+  // move player in specified direction (e/w/s/n), returning true
+  //   if was able to move in that direction
+bool Player::move(char direction)
+{
+    direction = tolower(direction);
+    if(direction == 'n')
+    {
+      if(!(yLocation - 1 < 0))
+      {
+        map->cells[xLocation][yLocation]->vacate();
+        yLocation--;
+        if(!determineMove(xLocation, yLocation))
+        {
+          yLocation++;
+          map->cells[xLocation][yLocation]->enter();
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else if(direction == 'e')
+    {
+      if(!(xLocation + 1 > 5))
+      {
+        map->cells[xLocation][yLocation]->vacate();
+        xLocation++;
+        if(!determineMove(xLocation, yLocation))
+        {
+          xLocation--;
+          map->cells[xLocation][yLocation]->enter();
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else if(direction == 's')
+    {
+      if(!(yLocation + 1 > 5))
+      {
+        map->cells[xLocation][yLocation]->vacate();
+        yLocation++;
+        if(!determineMove(xLocation, yLocation))
+        {
+          yLocation--;
+          map->cells[xLocation][yLocation]->enter();
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else if(direction == 'w')
+    {
+      if(!(xLocation - 1 < 0))
+      {
+        map->cells[xLocation][yLocation]->vacate();
+        xLocation--;
+        if(!determineMove(xLocation, yLocation))
+        {
+          xLocation++;
+          map->cells[xLocation][yLocation]->enter();
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+
+    return true;
+}
+
+/*
 bool Player::move(char direction){
     if(direction == 'e'){
         xLocation += 1;
@@ -30,7 +117,7 @@ bool Player::move(char direction){
         return false;
     }
     return true;
-}
+}*/
 
 void Player::shootArrow()
 { 
@@ -107,5 +194,5 @@ void Player::checkNeighbors()
             pit = true;
         }
     }
-    cout << endl;    
+    cout << endl;  
 }

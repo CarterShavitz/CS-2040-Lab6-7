@@ -69,10 +69,12 @@ void MapCell::vacate()
 {
   if (previous == '-')
   {
-    removeAmmo();
     previous = '.';
   }
-  
+  if (previous == 'P')
+  {
+    previous = '.';
+  }
+
   token = previous;
-  previous = ' ';
 }
