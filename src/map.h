@@ -16,7 +16,7 @@ class MapCell;
 // Add other methods and data as needed.
 class Map {
 public:
-  int playerx, playery;
+  int playerx, playery, wumpusx, wumpusy;
   MapCell *cells[6][6];
   // initialize empty map
   Map();
