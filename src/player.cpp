@@ -1,4 +1,6 @@
 #include "player.h"
+#include "map.h"
+#include "cell.h"
 #include <cstdio>
 #include <iostream>
 
@@ -10,6 +12,7 @@ Player::Player(Map *m, int startX, int startY){
     xLocation = startX;
     yLocation = startY;
 }
+
 bool Player::move(char direction){
     if(direction == 'e'){
         xLocation += 1;
@@ -40,4 +43,52 @@ void Player::shootArrow()
         /*the killed wumpus method might not be 
         needed only because it can be done in this method as well.*/
     
+}
+
+void Player::checkNeighbors()
+{
+    char neighbors[8] = {};
+    int size = 0;
+    if (xLocation - 1 >= 0)
+    {
+        if(yLocation - 1 >= 0)
+        {
+            neighbors[size] = map->cells[xLocation - 1][yLocation - 1]->display();
+            size++;
+        }
+        if (yLocation + 1 <= 5)
+        {
+            neighbors[size] = map->cells[xLocation - 1][yLocation + 1]->display();
+            size++;
+        }
+        neighbors[size] = map->cells[xLocation - 1][yLocation]->display();
+        size++;
+    }
+    if (xLocation + 1 <= 5)
+    {
+        if(yLocation - 1 >= 0)
+        {
+            neighbors[size] = map->cells[xLocation + 1][yLocation - 1]->display();
+            size++;
+        }
+        if (yLocation + 1 <= 5)
+        {
+            neighbors[size] = map->cells[xLocation + 1][yLocation + 1]->display();
+            size++;
+        }
+        neighbors[size] = map->cells[xLocation + 1][yLocation]->display();
+        size++;
+    }
+    if(yLocation - 1 >= 0)
+    {
+        neighbors[size] = map->cells[xLocation][yLocation - 1]->display();
+        size++;
+    }
+    if (yLocation + 1 <= 5)
+    {
+        neighbors[size] = map->cells[xLocation][yLocation + 1]->display();
+        size++;
+    }
+    
+    cout << neighbors << endl;
 }

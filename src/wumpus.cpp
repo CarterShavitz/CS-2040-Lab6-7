@@ -11,9 +11,9 @@
 
 using namespace std;
 
-Wumpus::Wumpus(MapCell *m, int x, int y, char type)
+Wumpus::Wumpus(Map *m, int x, int y, char type)
 {
-    cell = m; 
+    map = m;
     xLocation = x;
     yLocation = y;
     type = token;
@@ -21,14 +21,14 @@ Wumpus::Wumpus(MapCell *m, int x, int y, char type)
 
 void Wumpus::killPlayer() {
     char player = 'p';
-    player = cell->display();
-    if(player == cell->occupied()) {
+    player = map->cells[xLocation][yLocation]->display(); //Confused what is happening here
+    if(player == map->cells[xLocation][yLocation]->occupied()) {
         cout << "Oh no, the wumpus killed you!";
     }
 }
 
 bool Wumpus::isDead() {
-    if(cell->hasWumpus() == '.') {
+    if(map->cells[xLocation][yLocation]->hasWumpus() == '.') { //haswumpus() doesn't return a string
         cout << "Nice job, you beat the game!";
         return true;
     }

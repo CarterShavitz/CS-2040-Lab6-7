@@ -11,9 +11,9 @@
 
 using namespace std;
 
-Weapon::Weapon(MapCell *m, int x, int y, char type)
+Weapon::Weapon(Map *m, int x, int y, char type)
 {
-    cell = m;
+    map = m;
     xLocation = x;
     yLocation = y;
     type = token;
@@ -26,7 +26,7 @@ bool Weapon::hasArrow() {
 bool Weapon::killedWumpus()
 {
     token == '.';
-    if(cell->hasWumpus() == token) {
+    if(map->cells[xLocation][yLocation]->hasWumpus() == token) {
         return true;
     }
     return false;

@@ -7,14 +7,17 @@
 #ifndef WUMPUS_H_
 #define WUMPUS_H_
 
+class MapCell;
+class Map;
+
 class Wumpus {
 public:
 
-  MapCell *cell;
   int xLocation, yLocation;
+  Map *map;
   char token;
 
-  Wumpus(MapCell *m, int x, int y, char type);
+  Wumpus(Map *m, int x, int y, char type);
 
   void killPlayer();
   
