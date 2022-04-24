@@ -14,9 +14,9 @@ class Weapon {
  
 public:
 
-  Weapon(int x, int y, char type);
+  Weapon(Map *m, int x, int y, char type);
 
-  //void shootArrow();
+  void shootArrow();
   
   bool hasArrow();
   bool killedWumpus();

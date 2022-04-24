@@ -13,10 +13,12 @@ using namespace std;
 
 char previous = '.';
 
-Weapon::Weapon(int x, int y, char type)
+Weapon::Weapon(Map *m, int x, int y, char type)
 {
-    type == '-';
-    token = type;
+    map = m;
+    xLocation = x;
+    yLocation = y;
+    type = token;
 }
 
 bool Weapon::hasArrow() {
