@@ -28,8 +28,9 @@ void Wumpus::killPlayer() {
 }
 
 bool Wumpus::isDead() {
-    /*print out you win line or */
+    if(cell->hasWumpus() == '.') {
+        cout << "Nice job, you beat the game!";
+        return true;
+    }
     return false;
-    //return token == '.';
-    /*print out you win line or this can be done in main*/
 }
