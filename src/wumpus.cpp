@@ -13,8 +13,10 @@ using namespace std;
 
 char previous = '.';
 
-Wumpus::Wumpus(int x, int y, char type)
+Wumpus::Wumpus(Map *m, int x, int y, char type)
 {
+    xLocation = x;
+    yLocation = y;
     type == '!';
     token = type;
 }

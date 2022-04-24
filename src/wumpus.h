@@ -9,6 +9,7 @@
 
 class Wumpus {
 public:
+  Map *map;
  int xLocation, yLocation;
   char token;
   Wumpus(int x, int y, char type);
