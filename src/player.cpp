@@ -1,4 +1,6 @@
 #include "player.h"
+#include "map.h"
+#include "cell.h"
 #include <cstdio>
 #include <iostream>
 
@@ -10,6 +12,94 @@ Player::Player(Map *m, int startX, int startY){
     xLocation = startX;
     yLocation = startY;
 }
+
+
+bool Player::determineMove(int x, int y)
+{
+  if (map->cells[x][y]->hasWumpus())
+  {
+    return false;
+  }
+  if (map->cells[x][y]->hasAmmo())
+  {
+    amoCount++;
+    map->cells[x][y]->removeAmmo();
+  }
+  map->cells[x][y]->enter();
+  return true;
+} 
+ 
+  // move player in specified direction (e/w/s/n), returning true
+  //   if was able to move in that direction
+bool Player::move(char direction)
+{
+    direction = tolower(direction);
+    if(direction == 'n')
+    {
+      if(!(yLocation - 1 < 0))
+      {
+        map->cells[xLocation][yLocation]->vacate();
+        yLocation--;
+        if(!determineMove(xLocation, yLocation))
+        {
+          yLocation++;
+          map->cells[xLocation][yLocation]->enter();
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else if(direction == 'e')
+    {
+      if(!(xLocation + 1 > 5))
+      {
+        map->cells[xLocation][yLocation]->vacate();
+        xLocation++;
+        if(!determineMove(xLocation, yLocation))
+        {
+          xLocation--;
+          map->cells[xLocation][yLocation]->enter();
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else if(direction == 's')
+    {
+      if(!(yLocation + 1 > 5))
+      {
+        map->cells[xLocation][yLocation]->vacate();
+        yLocation++;
+        if(!determineMove(xLocation, yLocation))
+        {
+          yLocation--;
+          map->cells[xLocation][yLocation]->enter();
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else if(direction == 'w')
+    {
+      if(!(xLocation - 1 < 0))
+      {
+        map->cells[xLocation][yLocation]->vacate();
+        xLocation--;
+        if(!determineMove(xLocation, yLocation))
+        {
+          xLocation++;
+          map->cells[xLocation][yLocation]->enter();
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+
+    return true;
+}
+
+/*
 bool Player::move(char direction){
     if(direction == 'e'){
         xLocation += 1;
@@ -27,7 +117,7 @@ bool Player::move(char direction){
         return false;
     }
     return true;
-}
+}*/
 
 void Player::shootArrow()
 { 
@@ -40,4 +130,69 @@ void Player::shootArrow()
         /*the killed wumpus method might not be 
         needed only because it can be done in this method as well.*/
     
+}
+
+void Player::checkNeighbors()
+{
+    char neighbors[8] = {};
+    int size = 0;
+    if (xLocation - 1 >= 0)
+    {
+        if(yLocation - 1 >= 0)
+        {
+            neighbors[size] = map->cells[xLocation - 1][yLocation - 1]->display();
+            size++;
+        }
+        if (yLocation + 1 <= 5)
+        {
+            neighbors[size] = map->cells[xLocation - 1][yLocation + 1]->display();
+            size++;
+        }
+        neighbors[size] = map->cells[xLocation - 1][yLocation]->display();
+        size++;
+    }
+    if (xLocation + 1 <= 5)
+    {
+        if(yLocation - 1 >= 0)
+        {
+            neighbors[size] = map->cells[xLocation + 1][yLocation - 1]->display();
+            size++;
+        }
+        if (yLocation + 1 <= 5)
+        {
+            neighbors[size] = map->cells[xLocation + 1][yLocation + 1]->display();
+            size++;
+        }
+        neighbors[size] = map->cells[xLocation + 1][yLocation]->display();
+        size++;
+    }
+    if(yLocation - 1 >= 0)
+    {
+        neighbors[size] = map->cells[xLocation][yLocation - 1]->display();
+        size++;
+    }
+    if (yLocation + 1 <= 5)
+    {
+        neighbors[size] = map->cells[xLocation][yLocation + 1]->display();
+        size++;
+    }
+
+    bool bats = false, wumpus = false, pit = false;
+    for (int i = 0; i < size; i++)
+    {
+        if (neighbors[i] == 'B' && bats == false)
+        {
+            cout << "You hear flapping. ";
+            bats = true;
+        } else if (neighbors[i] == '!' && wumpus == false)
+        {
+            cout << "You smell something bad. ";
+            wumpus = true;
+        } else if (neighbors[i] == '@' && pit == false)
+        {
+            cout << "You feel a breeze. ";
+            pit = true;
+        }
+    }
+    cout << endl;  
 }
