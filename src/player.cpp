@@ -7,7 +7,7 @@
 using namespace std;
 
 Player::Player(Map *m, int startX, int startY){
-    amoCount = 0;
+    ammoCount = 4;
     map = m;
     xLocation = startX;
     yLocation = startY;
@@ -25,7 +25,7 @@ bool Player::determineMove(int x, int y)
   }
   if (map->cells[x][y]->hasAmmo())
   {
-    amoCount++;
+    ammoCount++;
     map->cells[x][y]->removeAmmo();
   }
   map->cells[x][y]->enter();
@@ -102,7 +102,24 @@ bool Player::move(char direction)
     return true;
 }
 
-void Player::shootArrow(string direction)
+bool Player::determineShot(int x, int y)
+{
+    if(ammoCount > 0)
+    {
+        ammoCount--;
+        if (map->cells[x][y]->hasWumpus())
+        {
+            cout << "you've killed the wumpus!" << endl;
+            return true;
+        }
+        return false;
+    } else {
+        cout << "you're out of ammo, find ammo" << endl;
+        return false;
+    }
+} 
+
+bool Player::shootArrow(char direction)
 { 
     /*player shoots/clicks right or left or down or up on the arrow*/
     
@@ -112,7 +129,59 @@ void Player::shootArrow(string direction)
         /*shoot the arrow*/
         /*the killed wumpus method might not be 
         needed only because it can be done in this method as well.*/
-    
+    direction = tolower(direction);
+    int x = xLocation;
+    int y = yLocation;
+    if(direction == 'n')
+    {
+      if(!(y - 1 < 0))
+      {
+        y--;
+        if(determineShot(x, y))
+        {
+            return true;
+        }
+      } else {
+        return false;
+      }
+    } else if(direction == 'e')
+    {
+      if(!(x + 1 > 5))
+      {
+        x++;
+        if(determineShot(x, y))
+        {
+            return true;
+        }
+      } else {
+        return false;
+      }
+    } else if(direction == 's')
+    {
+      if(!(y + 1 > 5))
+      {
+        y++;
+        if(determineShot(x, y))
+        {
+            return true;
+        }
+      } else {
+        return false;
+      }
+    } else if(direction == 'w')
+    {
+      if(!(x - 1 < 0))
+      {
+        x--;
+        if(determineShot(x, y))
+        {
+            return true;
+        }
+      } else {
+        return false;
+      }
+    }
+    return false;
 }
 
 void Player::checkNeighbors()
