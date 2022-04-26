@@ -19,16 +19,20 @@ Wumpus::Wumpus(Map *m, int x, int y, char type)
     type = token;
 }
 
-void Wumpus::killPlayer() {
+/*void Wumpus::killPlayer() {
     char player = 'p';
+    //gets the players location
     player = map->cells[xLocation][yLocation]->display(); //Confused what is happening here
+    //if the player is at wumpus location and the wumpus is not dead, it kills the player
     if(player == map->cells[xLocation][yLocation]->occupied()) {
-        cout << "Oh no, the wumpus killed you!";
+        if(!Wumpus.isDead()) {
+            cout << "Oh no, the wumpus killed you!";
+        }
     }
 }
-
+*/
 bool Wumpus::isDead() {
-    if(map->cells[xLocation][yLocation]->hasWumpus() == '.') { //haswumpus() doesn't return a string
+    if(!map->cells[xLocation][yLocation]->display() == '!') { //haswumpus() doesn't return a string
         cout << "Nice job, you beat the game!";
         return true;
     }

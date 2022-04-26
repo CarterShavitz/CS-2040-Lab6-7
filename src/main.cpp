@@ -1,3 +1,9 @@
+/**
+ * @file main.cpp
+ * @author Brianna Davis
+ * @brief  game driver class
+ *  
+ */
 #include "player.h"
 #include "map.h"
 #include "wumpus.h"
