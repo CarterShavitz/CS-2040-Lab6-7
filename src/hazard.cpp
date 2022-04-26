@@ -40,7 +40,7 @@ class Hole: public Hazard{
     
     bool killed() {
         token == '@';
-        if(map->cells[xLocation][yLocation]->getToken() == token) {
+        if(map->cells[xLocation][yLocation]->display() == token) {
             cout << "Player fell into the hole and DIED!!!!";
             return true;
         }
@@ -60,7 +60,7 @@ class Spike: public Hazard{
     
     bool killed() {
         token == '&';
-        if(map->cells[xLocation][yLocation]->getToken() == token) {
+        if(map->cells[xLocation][yLocation]->display() == token) {
             cout << "Player got killed by SPIKES!!!";
             return true;
         }
