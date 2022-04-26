@@ -11,12 +11,13 @@
 
 using namespace std;
 
-Wumpus::Wumpus(Map *m, int x, int y, char type)
+Wumpus::Wumpus(Map *m, int x, int y)
 {
     map = m;
     xLocation = x;
     yLocation = y;
-    type = token;
+    token = '!';
+    alive = true;
 }
 
 /*void Wumpus::killPlayer() {
@@ -37,4 +38,8 @@ bool Wumpus::isDead() {
         return true;
     }
     return false;
+}
+
+void Wumpus::killWumpus() {
+    alive = false;
 }

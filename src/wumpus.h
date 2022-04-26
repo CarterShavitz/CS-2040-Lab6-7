@@ -16,10 +16,13 @@ public:
   int xLocation, yLocation;
   Map *map;
   char token;
+  bool alive;
 
-  Wumpus(Map *m, int x, int y, char type);
+  Wumpus(Map *m, int x, int y);
 
   void killPlayer();
+
+  void killWumpus();
   
   bool isDead();
 };
