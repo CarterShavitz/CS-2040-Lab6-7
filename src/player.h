@@ -12,7 +12,7 @@ class Map;
 
 class Player{
 private:
-    int amoCount;
+    int ammoCount;
     Map *map;
     int xLocation;
     int yLocation;
@@ -20,7 +20,8 @@ public:
     bool dead;
     Player(Map *m, int startX, int startY);
     bool move(char direction);
-    void shootArrow(char direction);
+    bool shootArrow(char direction);
+    bool determineShot(int x, int y);
     void checkNeighbors();
     bool determineMove(int x, int y);
 };
