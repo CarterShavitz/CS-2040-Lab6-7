@@ -20,7 +20,7 @@ int main()
     Player *player = new Player(map, map->playerx,map->playery);
     // Wumpus *wumpus = new Wumpus()
     map->write();
-    // while(map.)
+    while(!player->dead){
     bool moved = false;
     char direction;
     while(!moved)
@@ -35,5 +35,5 @@ int main()
             map->write();
         }
     }
-    map->write();
+    map->write();}
 }

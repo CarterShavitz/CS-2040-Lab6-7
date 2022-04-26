@@ -19,6 +19,7 @@ bool Player::determineMove(int x, int y)
 {
   if (map->cells[x][y]->hasWumpus())
   {
+    cout << "you've been killed by the wumpus" << endl;
     dead = true;
     return false;
   }
@@ -101,7 +102,7 @@ bool Player::move(char direction)
     return true;
 }
 
-void Player::shootArrow()
+void Player::shootArrow(string direction)
 { 
     /*player shoots/clicks right or left or down or up on the arrow*/
     
