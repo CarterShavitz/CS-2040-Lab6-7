@@ -20,7 +20,7 @@ public:
 
   Weapon(Map* m, int x, int y, char type);
   bool hasArrow();
-  //bool killedWumpus();
+  bool killedWumpus();
 
 };
 
