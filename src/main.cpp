@@ -21,12 +21,15 @@ int main()
     // Wumpus *wumpus = new Wumpus()
     map->write();
     while(!player->dead){
+    string userIn;
+    cin >> userIn;
+    cout << userIn;
     bool moved = false;
-    char direction;
     while(!moved)
     {
         player->checkNeighbors();
         cout << "Make your move (e/n/w/s): ";
+        char direction; 
         cin >> direction;
         if(player->move(direction)) 
         {
