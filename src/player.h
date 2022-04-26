@@ -17,6 +17,7 @@ private:
     int xLocation;
     int yLocation;
 public:
+    bool dead;
     Player(Map *m, int startX, int startY);
     bool move(char direction);
     void shootArrow();

@@ -13,7 +13,7 @@ int main()
     map->load();
     Player *player = new Player(map, map->playerx,map->playery);
     // Wumpus *wumpus = new Wumpus()
-    // map->write();
+    map->write();
     // while(map.)
     bool moved = false;
     char direction;
