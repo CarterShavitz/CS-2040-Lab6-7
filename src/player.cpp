@@ -11,6 +11,7 @@ Player::Player(Map *m, int startX, int startY){
     map = m;
     xLocation = startX;
     yLocation = startY;
+    dead = false;
 }
 
 
@@ -18,6 +19,8 @@ bool Player::determineMove(int x, int y)
 {
   if (map->cells[x][y]->hasWumpus())
   {
+    cout << "you've been killed by the wumpus" << endl;
+    dead = true;
     return false;
   }
   if (map->cells[x][y]->hasAmmo())
@@ -99,27 +102,7 @@ bool Player::move(char direction)
     return true;
 }
 
-/*
-bool Player::move(char direction){
-    if(direction == 'e'){
-        xLocation += 1;
-    }
-    else if(direction == 'w'){
-        xLocation -= 1;
-    }
-    else if(direction == 'n'){
-        yLocation -= 1;
-    }
-    else if(direction == 's'){
-        yLocation += 1;
-    } else{
-        cout << "enter a valid direction (e/n/w/s)" << endl;
-        return false;
-    }
-    return true;
-}*/
-
-void Player::shootArrow()
+void Player::shootArrow(string direction)
 { 
     /*player shoots/clicks right or left or down or up on the arrow*/
     

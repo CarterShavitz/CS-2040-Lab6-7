@@ -1,3 +1,9 @@
+/**
+ * @file main.cpp
+ * @author Brianna Davis
+ * @brief  game driver class
+ *  
+ */
 #include "player.h"
 #include "map.h"
 #include "wumpus.h"
@@ -7,21 +13,27 @@
 
 using namespace std;
 
-int main(){
+int main()
+{
     Map *map = new Map();
     map->load();
-    int playerX = rand () % 6;
-    int playerY = rand () % 6;
-    Player *player = new Player(map, playerX,playerY);
+    Player *player = new Player(map, map->playerx,map->playery);
+    // Wumpus *wumpus = new Wumpus()
     map->write();
-    
+    while(!player->dead){
     bool moved = false;
-    while(!moved){
-    cout << "Make your move (e/n/w/s): ";
     char direction;
-    cin >> direction;
-    moved = player->move(direction);
+    while(!moved)
+    {
+        player->checkNeighbors();
+        cout << "Make your move (e/n/w/s): ";
+        cin >> direction;
+        if(player->move(direction)) 
+        {
+            map->write();
+        } else {
+            map->write();
+        }
     }
-    map->write();
-
+    map->write();}
 }
