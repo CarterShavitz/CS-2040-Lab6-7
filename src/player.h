@@ -4,18 +4,24 @@
  */
 #ifndef PLAYER_H_
 #define PLAYER_H_
-#include "map.h"
+
+
+class MapCell;
+class Map;
 #include <string>
+
 class Player{
-    public:
+private:
     int amoCount;
     Map *map;
     int xLocation;
     int yLocation;
+public:
     Player(Map *m, int startX, int startY);
-
     bool move(char direction);
     void shootArrow();
+    void checkNeighbors();
+    bool determineMove(int x, int y);
 };
 
 #endif /*PLAYER_H_*/

@@ -11,8 +11,6 @@
 
 using namespace std;
 
-char previous = '.';
-
 Weapon::Weapon(Map *m, int x, int y, char type)
 {
     map = m;
@@ -27,6 +25,9 @@ bool Weapon::hasArrow() {
 
 bool Weapon::killedWumpus()
 {
+    token == '.';
+    if(map->cells[xLocation][yLocation]->hasWumpus() == token) {
+        return true;
+    }
     return false;
-     /*return true if the wumpus has been killed or false if the wumpus has not been killed.*/
 }

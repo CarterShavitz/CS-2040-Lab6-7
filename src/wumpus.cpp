@@ -11,23 +11,26 @@
 
 using namespace std;
 
-char previous = '.';
-
 Wumpus::Wumpus(Map *m, int x, int y, char type)
 {
+    map = m;
     xLocation = x;
     yLocation = y;
-    type == '!';
-    token = type;
+    type = token;
 }
 
 void Wumpus::killPlayer() {
-
+    char player = 'p';
+    player = map->cells[xLocation][yLocation]->display(); //Confused what is happening here
+    if(player == map->cells[xLocation][yLocation]->occupied()) {
+        cout << "Oh no, the wumpus killed you!";
+    }
 }
 
 bool Wumpus::isDead() {
-    /*print out you win line or */
+    if(map->cells[xLocation][yLocation]->hasWumpus() == '.') { //haswumpus() doesn't return a string
+        cout << "Nice job, you beat the game!";
+        return true;
+    }
     return false;
-    //return token == '.';
-    /*print out you win line or this can be done in main*/
 }
