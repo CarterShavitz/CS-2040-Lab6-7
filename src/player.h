@@ -20,7 +20,7 @@ public:
     bool dead;
     Player(Map *m, int startX, int startY);
     bool move(char direction);
-    void shootArrow(string direction);
+    void shootArrow(char direction);
     void checkNeighbors();
     bool determineMove(int x, int y);
 };
