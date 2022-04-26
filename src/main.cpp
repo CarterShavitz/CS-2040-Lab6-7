@@ -17,7 +17,7 @@ char prompt(){
     char userIn;
     cout << "Make your move (e/n/w/s) or shoot and arrow (a): " << endl;
     cin >> userIn; 
-    if(userIn == 'e' ||userIn == 'n' ||userIn == 's' ||userIn == 'w' ||userIn == 'a'){
+    if(userIn == 'e' ||userIn == 'n' ||userIn == 's' ||userIn == 'w' ||userIn == 'a'||userIn == 'm'||userIn == 'h'|| userIn == 'd'){
         return userIn;
     } else{
         return ' ';
