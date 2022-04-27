@@ -58,8 +58,8 @@ class Pit: public Hazard{
 class Bat: public Hazard{
     public:
     char bat = 'B';
-    int xRand = rand() % 5;
-    int yRand = rand() % 5;
+    int xRand = rand() % 6;
+    int yRand = rand() % 6;
     Player player;
 
     char getToken() {
