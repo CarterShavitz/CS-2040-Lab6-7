@@ -23,6 +23,16 @@ bool Player::determineMove(int x, int y)
     dead = true;
     return false;
   }
+  if (map->cells[x][y]->hasHazard())
+  {
+      if (map->cells[x][y]->display() == 'B')
+      {
+        //call bat interact
+      } else if (map->cells[x][y]->display() == '@') 
+      {
+        //call pit interact
+      }
+  }
   if (map->cells[x][y]->hasAmmo())
   {
     ammoCount++;
