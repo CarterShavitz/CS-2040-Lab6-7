@@ -74,6 +74,7 @@ class Bat: public Hazard{
         int size = 36;
         int index = 0;
         char c = ' ';
+        token = 'B';
 
         if(map->cells[xLocation][yLocation]->display() == token) {
             for (auto i = 0; i < 6; i++)
