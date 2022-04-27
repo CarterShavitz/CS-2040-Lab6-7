@@ -46,7 +46,7 @@ int main()
             }
         }
         else if (userIn != ' '){
-            if(userIn != 'h' && userIn != 'd'){
+            if((userIn != 'h' && userIn != 'd') && userIn != 'm'){
             player->move(userIn);
             map->write();
             } else if(userIn == 'd'){
@@ -56,13 +56,16 @@ int main()
                 player = new Player(map, map->playerx,map->playery);
                 wumpus = new Wumpus(map, map->wumpusx, map->wumpusy);
                 map->write();
-            } else{
+            } else if(userIn == 'h'){
                 //help mode (print out how the game works or something along those lines)
+            } else if(userIn == 'm'){
+                map->write();
             }
         }
         else{
             cout << "invalid selection" << endl;
         }
     }
+    return 0;
 }
 
