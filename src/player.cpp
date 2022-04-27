@@ -26,6 +26,7 @@ bool Player::determineMove(int x, int y)
   if (map->cells[x][y]->hasAmmo())
   {
     ammoCount++;
+    cout << "you've picked up ammo" << endl;
     map->cells[x][y]->removeAmmo();
   }
   map->cells[x][y]->enter();

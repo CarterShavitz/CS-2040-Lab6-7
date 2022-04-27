@@ -20,7 +20,9 @@ public:
   MapCell *cells[6][6];
   // initialize empty map
   Map();
-  // read the map from cin
+  // make debug map
+  void debugLoad();
+  // read the map from randomization
   void load();
   // write the full map to cout
   void write();

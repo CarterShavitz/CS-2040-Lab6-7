@@ -26,6 +26,35 @@ Map::Map()
     }
 }
 
+void Map::debugLoad()
+{
+    char symbols[36] = {'P', '.', 'B', '.', '.', '@', '.', '@', '.', '@', 
+                            '?', '-', '-', '-', '-', '-', '-', '@', '.', '.', 
+                            '@', '.', '!', '.', '.', 'B', '.', '.', '.', '.', 
+                            '.', 'B', '.', '.', '.', '.'};
+    int size = 36;
+    int index = 35;
+    char c = ' ';
+
+    for (auto i = 0; i < 6; i++)
+    {
+        for (auto j = 0; j < 6; j++)
+        {
+            c = symbols[index];
+            if (c == 'P') {
+                playerx = i;
+                playery = j;
+            }
+            if (c == '!') {
+                wumpusx = i;
+                wumpusy = j;
+            }
+            Map::cells[i][j] = new MapCell(i, j, c);
+            index--;
+        }
+    }
+}
+
 void Map::load()
 {
     //randomize loading of elements (1 player, 1 wumpus, 

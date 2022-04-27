@@ -50,9 +50,14 @@ int main()
             player->move(userIn);
             map->write();
             } else if(userIn == 'd'){
-                //debug mode
+                //debug mode (print out default map, restarting game)
+                //maybe create another method to call in here
+                map->debugLoad();
+                player = new Player(map, map->playerx,map->playery);
+                wumpus = new Wumpus(map, map->wumpusx, map->wumpusy);
+                map->write();
             } else{
-                //help mode
+                //help mode (print out how the game works or something along those lines)
             }
         }
         else{
