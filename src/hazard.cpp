@@ -58,6 +58,9 @@ class Pit: public Hazard{
 class Bat: public Hazard{
     public:
     char bat = 'B';
+    int xRand = rand() % 5;
+    int yRand = rand() % 5;
+    Player player;
 
     char getToken() {
         token = bat;
@@ -65,39 +68,13 @@ class Bat: public Hazard{
     }
     
     bool interact() {
-
-        cout << "OH NO! Player got relocated by bats!!";
-        char symbols[36] = {'P', '!', 'B', 'B', 'B', '@', '@', '@', '@', '@', 
-                            '?', '-', '-', '-', '-', '-', '-', '.', '.', '.', 
-                            '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 
-                            '.', '.', '.', '.', '.', '.'};
-        int size = 36;
-        int index = 0;
-        char c = ' ';
-        token = 'B';
-
+        token == 'B';
         if(map->cells[xLocation][yLocation]->display() == token) {
-            for (auto i = 0; i < 6; i++)
-                {
-                for (auto j = 0; j < 6; j++)
-                {
-                    index = rand() % size;
-                    c = symbols[index];
-                    if (c == 'P') {
-                        map->playerx = i;
-                        map->playery = j;
-                    }
-                    map->cells[i][j] = new MapCell(i, j, c);
-                    for (auto k = index; k < size; k++)
-                    {
-                        symbols[k] = symbols[k + 1];
-                    }
-                    size--;
-                }
-            }
+            cout << "BATS caught the player";
+            player.determineMove(xRand, yRand);
             return true;
         }
         return false;
+        
     }
-
 };
