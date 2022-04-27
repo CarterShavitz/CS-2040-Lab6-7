@@ -30,7 +30,7 @@ int main()
     map->load();
     Player *player = new Player(map, map->playerx,map->playery);
     Wumpus *wumpus = new Wumpus(map, map->wumpusx, map->wumpusy);
-    map->write();
+    map->write(); //comment out once done
     
     while(!player->dead && wumpus->alive){
         player->checkNeighbors();
@@ -48,7 +48,7 @@ int main()
         else if (userIn != ' '){
             if((userIn != 'h' && userIn != 'd') && userIn != 'm'){
             player->move(userIn);
-            map->write();
+            map->write(); //comment out once done
             } else if(userIn == 'd'){
                 //debug mode (print out default map, restarting game)
                 //maybe create another method to call in here

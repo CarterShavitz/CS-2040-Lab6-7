@@ -22,6 +22,11 @@ public:
     char token;
     Map *map;
 
+Hazard()
+{
+
+}
+
 Hazard(Map *m, int x, int y, char type)
 {
     map = m;
@@ -38,6 +43,11 @@ bool interact();
 class Pit: public Hazard{
     public:
     char pit = '@';
+
+    Pit(Map *m, int x, int y, char type)
+    {
+
+    }
 
     char getToken() {
         token = pit;
@@ -60,7 +70,12 @@ class Bat: public Hazard{
     char bat = 'B';
     int xRand = rand() % 6;
     int yRand = rand() % 6;
-    Player player;
+    Player *player = new Player(map, xLocation, yLocation);
+
+    Bat(Map *m, int x, int y, char type, Player *player)
+    {
+        this->player = player;
+    }
 
     char getToken() {
         token = bat;
@@ -71,7 +86,7 @@ class Bat: public Hazard{
         token == 'B';
         if(map->cells[xLocation][yLocation]->display() == token) {
             cout << "BATS caught the player";
-            player.determineMove(xRand, yRand);
+            player->determineMove(xRand, yRand);
             return true;
         }
         return false;

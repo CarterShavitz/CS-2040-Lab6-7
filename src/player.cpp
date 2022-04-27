@@ -1,6 +1,7 @@
 #include "player.h"
 #include "map.h"
 #include "cell.h"
+#include "hazard.cpp"
 #include <cstdio>
 #include <iostream>
 
@@ -25,13 +26,17 @@ bool Player::determineMove(int x, int y)
   }
   if (map->cells[x][y]->hasHazard())
   {
+      Hazard *hazard = new Hazard(map, x, y, ' ');
       if (map->cells[x][y]->display() == 'B')
       {
+          hazard = new Bat(map, x, y, 'B', this);
         //call bat interact
       } else if (map->cells[x][y]->display() == '@') 
       {
+          hazard = new Pit(map, x, y, '@');
         //call pit interact
       }
+      hazard->interact();
   }
   if (map->cells[x][y]->hasAmmo())
   {
