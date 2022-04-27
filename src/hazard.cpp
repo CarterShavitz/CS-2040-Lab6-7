@@ -8,6 +8,11 @@
 #include "map.h"
 #include "weapon.h"
 #include <iostream>
+#include "player.h"
+#include <string>
+#include <fstream>
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 
@@ -26,22 +31,23 @@ Hazard(Map *m, int x, int y, char type)
 }
 
 char getToken();
-bool killed();
+bool interact();
+
 };
 
-class Hole: public Hazard{
+class Pit: public Hazard{
     public:
-    char hole = '@';
+    char pit = '@';
 
     char getToken() {
-        token = hole;
+        token = pit;
         return token;
     }
     
-    bool killed() {
+    bool interact() {
         token == '@';
         if(map->cells[xLocation][yLocation]->display() == token) {
-            cout << "Player fell into the hole and DIED!!!!";
+            cout << "Player fell into the pit and DIED!!!!";
             return true;
         }
         return false;
@@ -49,19 +55,46 @@ class Hole: public Hazard{
 
 };
 
-class Spike: public Hazard{
+class Bat: public Hazard{
     public:
-    char spike = '&';
+    char bat = 'B';
 
     char getToken() {
-        token = spike;
+        token = bat;
         return token;
     }
     
-    bool killed() {
-        token == '&';
+    bool interact() {
+
+        cout << "OH NO! Player got relocated by bats!!";
+        char symbols[36] = {'P', '!', 'B', 'B', 'B', '@', '@', '@', '@', '@', 
+                            '?', '-', '-', '-', '-', '-', '-', '.', '.', '.', 
+                            '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 
+                            '.', '.', '.', '.', '.', '.'};
+        int size = 36;
+        int index = 0;
+        char c = ' ';
+        token = 'B';
+
         if(map->cells[xLocation][yLocation]->display() == token) {
-            cout << "Player got killed by SPIKES!!!";
+            for (auto i = 0; i < 6; i++)
+                {
+                for (auto j = 0; j < 6; j++)
+                {
+                    index = rand() % size;
+                    c = symbols[index];
+                    if (c == 'P') {
+                        map->playerx = i;
+                        map->playery = j;
+                    }
+                    map->cells[i][j] = new MapCell(i, j, c);
+                    for (auto k = index; k < size; k++)
+                    {
+                        symbols[k] = symbols[k + 1];
+                    }
+                    size--;
+                }
+            }
             return true;
         }
         return false;
