@@ -106,3 +106,21 @@ void Map::write()
         cout << endl;
     }
 }
+
+void Map::writePlayer()
+{
+    //write the map back with an updated robot location
+    for (int i = 0; i < 6; i++)
+    {
+        for (int j = 0; j < 6; j++)
+        {
+            if(Map::cells[j][i]->display() != 'P') {
+                cout << '.';
+            } else {
+                cout << 'P';
+            }
+           
+        }
+        cout << endl;
+    }
+}

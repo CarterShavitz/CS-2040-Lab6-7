@@ -26,6 +26,8 @@ public:
   void load();
   // write the full map to cout
   void write();
+  //writes empty map with player
+  void writePlayer();
 };
 
 #endif /* MAP_H_ */
