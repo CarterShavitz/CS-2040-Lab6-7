@@ -1,3 +1,9 @@
+/*
+ * cell.cpp
+ *
+ *      Author: Carter & Brianna
+ */
+
 #include "player.h"
 #include "map.h"
 #include "cell.h"
