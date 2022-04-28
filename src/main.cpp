@@ -47,7 +47,9 @@ int main()
             {
                 cout << "You Missed!" << endl;
             }
-            map->writePlayer();
+            if(wumpus->alive) {
+                map->writePlayer();
+            }
         }
         else if (userIn != ' '){
             if((userIn != 'h' && userIn != 'd') && userIn != 'm'){
