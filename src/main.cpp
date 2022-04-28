@@ -52,7 +52,9 @@ int main()
         else if (userIn != ' '){
             if((userIn != 'h' && userIn != 'd') && userIn != 'm'){
             player->move(userIn);
-            map->writePlayer(); //comment out once done
+            if(!player->dead) {
+                map->writePlayer();
+            } //comment out once done
             } else if(userIn == 'd'){
                 //debug mode (print out default map, restarting game)
                 //maybe create another method to call in here
