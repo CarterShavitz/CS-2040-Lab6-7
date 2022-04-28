@@ -26,17 +26,20 @@ bool Player::determineMove(int x, int y)
   }
   if (map->cells[x][y]->hasHazard())
   {
-      Hazard *hazard = new Hazard(map, x, y, ' ');
-      if (map->cells[x][y]->display() == 'B')
-      {
-          hazard = new Bat(map, x, y, 'B', this);
-        //call bat interact
-      } else if (map->cells[x][y]->display() == '@') 
-      {
-          hazard = new Pit(map, x, y, '@');
-        //call pit interact
-      }
-      hazard->interact();
+        Hazard *hazard = new Hazard(map, x, y, ' ');
+        if (map->cells[x][y]->display() == 'B')
+        {
+            hazard = new Bat(map, x, y, 'B', this);
+        } else if (map->cells[x][y]->display() == '@') 
+        {
+            hazard = new Pit(map, x, y, '@', this);
+        }
+        dead = !hazard->interact();
+        if (dead)
+        {
+            return false;
+        }
+        
   }
   if (map->cells[x][y]->hasAmmo())
   {
@@ -263,4 +266,24 @@ void Player::checkNeighbors()
         }
     }
     cout << endl;  
+}
+
+int Player::getX()
+{
+    return xLocation;
+}
+
+int Player::getY()
+{
+    return yLocation;
+}
+
+void Player::setX(int x)
+{
+    xLocation = x;
+}
+
+void Player::setY(int y)
+{
+    yLocation = y;
 }

@@ -24,6 +24,10 @@ public:
     bool determineShot(int x, int y);
     void checkNeighbors();
     bool determineMove(int x, int y);
+    int getX();
+    int getY();
+    void setX(int x);
+    void setY(int y);
 };
 
 #endif /*PLAYER_H_*/

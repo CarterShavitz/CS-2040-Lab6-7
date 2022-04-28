@@ -22,31 +22,37 @@ public:
     char token;
     Map *map;
 
-Hazard()
-{
+    Hazard()
+    {
 
-}
+    }
 
-Hazard(Map *m, int x, int y, char type)
-{
-    map = m;
-    xLocation = x;
-    yLocation = y;
-    type = token;
-}
+    Hazard(Map *m, int x, int y, char type)
+    {
+        map = m;
+        xLocation = x;
+        yLocation = y;
+        type = token;
+    }
 
-char getToken();
-bool interact();
-
+    char getToken() {
+        cout << "shouldn't print" << endl;
+        return ' ';
+    }
+    virtual bool interact() {
+        cout << "shouldn't print" << endl;
+        return false;
+    }
 };
 
 class Pit: public Hazard{
     public:
     char pit = '@';
+    Player *player = new Player(map, xLocation, yLocation);
 
-    Pit(Map *m, int x, int y, char type)
+    Pit(Map *m, int x, int y, char type, Player *player)
     {
-
+        this->player = player;
     }
 
     char getToken() {
@@ -56,10 +62,8 @@ class Pit: public Hazard{
     
     bool interact() {
         token == '@';
-        if(map->cells[xLocation][yLocation]->display() == token) {
-            cout << "Player fell into the pit and DIED!!!!";
-            return true;
-        }
+        cout << "Player fell into the pit and DIED!!!!" << endl;
+        player->dead = false;
         return false;
     }
 
@@ -74,6 +78,7 @@ class Bat: public Hazard{
 
     Bat(Map *m, int x, int y, char type, Player *player)
     {
+        map = m;
         this->player = player;
     }
 
@@ -84,12 +89,10 @@ class Bat: public Hazard{
     
     bool interact() {
         token == 'B';
-        if(map->cells[xLocation][yLocation]->display() == token) {
-            cout << "BATS caught the player";
-            player->determineMove(xRand, yRand);
-            return true;
-        }
-        return false;
-        
+        cout << "BATS caught the player" << endl;
+        map->cells[player->getX()][player->getY()]->vacate();
+        player->setX(xRand);
+        player->setY(yRand);
+        return player->determineMove(xRand, yRand);
     }
 };

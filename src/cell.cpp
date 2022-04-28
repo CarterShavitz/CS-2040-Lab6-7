@@ -30,7 +30,7 @@ bool MapCell::hasBat()
   // true if hazard at this location
 bool MapCell::hasHazard()
 {
-    return token == '@';
+    return (token == '@' || token == 'B');
 }
   // true if bat at this location
 bool MapCell::hasTreasure()
