@@ -15,7 +15,7 @@ using namespace std;
 
 char prompt(){
     char userIn;
-    cout << "Make your move (e/n/w/s), shoot and arrow (a), debug(d) or get help(h): " << endl;
+    cout << "Make your move (e/n/w/s), shoot and arrow (a), debug(d), see the map(m) or get help(h): " << endl;
     cin >> userIn; 
     if(userIn == 'e' ||userIn == 'n' ||userIn == 's' ||userIn == 'w' ||userIn == 'a'||userIn == 'm'||userIn == 'h'|| userIn == 'd'){
         return userIn;
@@ -74,11 +74,6 @@ int main()
         else{
             cout << "invalid selection" << endl;
         }
-    }
-    if(player->dead){
-        cout << "Better luck next time" << endl;
-    } else{
-        cout << "Congratulations!" << endl;
     }
     return 0;
 }
