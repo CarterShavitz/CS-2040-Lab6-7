@@ -63,7 +63,7 @@ class Pit: public Hazard{
     bool interact() {
         token == '@';
         cout << "Player fell into the pit and DIED!!!!" << endl;
-        player->dead = false;
+        player->dead = true;
         return false;
     }
 
