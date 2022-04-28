@@ -39,7 +39,6 @@ bool Player::determineMove(int x, int y)
         {
             return false;
         }
-        
   }
   if (map->cells[x][y]->hasAmmo())
   {
@@ -47,7 +46,6 @@ bool Player::determineMove(int x, int y)
     cout << "you've picked up ammo" << endl;
     map->cells[x][y]->removeAmmo();
   }
-  map->cells[x][y]->enter();
   return true;
 } 
  
@@ -68,6 +66,7 @@ bool Player::move(char direction)
           map->cells[xLocation][yLocation]->enter();
           return false;
         }
+        map->cells[xLocation][yLocation]->enter();
       } else {
         return false;
       }
@@ -83,6 +82,7 @@ bool Player::move(char direction)
           map->cells[xLocation][yLocation]->enter();
           return false;
         }
+        map->cells[xLocation][yLocation]->enter();
       } else {
         return false;
       }
@@ -98,6 +98,7 @@ bool Player::move(char direction)
           map->cells[xLocation][yLocation]->enter();
           return false;
         }
+        map->cells[xLocation][yLocation]->enter();
       } else {
         return false;
       }
@@ -113,6 +114,7 @@ bool Player::move(char direction)
           map->cells[xLocation][yLocation]->enter();
           return false;
         }
+        map->cells[xLocation][yLocation]->enter();
       } else {
         return false;
       }

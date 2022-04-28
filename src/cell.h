@@ -38,6 +38,7 @@ public:
   void enter();
   // player leaves location
   void vacate();
+  void setCell(char c);
 };
 
 #endif /* CELL_H_ */

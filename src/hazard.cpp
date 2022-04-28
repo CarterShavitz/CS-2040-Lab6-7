@@ -88,9 +88,9 @@ class Bat: public Hazard{
     }
     
     bool interact() {
-        token == 'B';
         cout << "BATS caught the player" << endl;
         map->cells[player->getX()][player->getY()]->vacate();
+        map->cells[player->getX()][player->getY()]->setCell('B');
         player->setX(xRand);
         player->setY(yRand);
         return player->determineMove(xRand, yRand);

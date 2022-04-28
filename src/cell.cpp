@@ -78,3 +78,8 @@ void MapCell::vacate()
 
   token = previous;
 }
+
+void MapCell::setCell(char c)
+{
+  token = c;
+}
